@@ -105,7 +105,7 @@ if "BOARD" in env:
         ]
     )
 
-if board.get("build.cpu") == "cortex-m4":
+if board.get("build.cpu") == "cortex-m4" and board.get("build.mcu") != "nrf52810":
     env.Append(
         CCFLAGS=[
             "-mfloat-abi=softfp",
@@ -130,6 +130,10 @@ elif "NRF51_S130" in cpp_defines:
     softdevice_ver = "s130"
 elif "NRF51_S110" in cpp_defines:
     softdevice_ver = "s110"
+elif "NRF52_S112" in cpp_defines:
+    softdevice_ver = "s112"
+elif "NRF52_S113" in cpp_defines:
+    softdevice_ver = "s113"
 
 if softdevice_ver:
 
